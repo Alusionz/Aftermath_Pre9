@@ -1,6 +1,6 @@
 ## SWG Aftermath ##
 
-* [![GitHub Commits](https://img.shields.io/github/last-commit/SWGAftermath/Aftermath.svg?color=FF0000&style=plastic)](https://github.com/SWGAftermath/Aftermath/commits/main) [![vote for aftermath](https://img.shields.io/badge/Vote%20for%20Aftermath-Click%20Here-red?color=FF0000&style=plastic)](https://topg.org/swg-private-servers/in-486823)
+[![GitHub Commits](https://img.shields.io/github/last-commit/SWGAftermath/Aftermath.svg?color=FF0000&style=plastic)](https://github.com/SWGAftermath/Aftermath/commits/main)
 
 ## Aftermath Credits and Thanks ##
 
