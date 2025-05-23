@@ -8,8 +8,8 @@ force_color_crystal = {
 	craftingValues = {
 		{"color",0,30,0}, -- 12 standard (0-11) + 19 named (12-30)
 		{"minDamage",100,150,0},
-		{"MaxDamage",100,150,0},
-		{"hitPoints",700,1400,0},
+		{"maxDamage",100,150,0},
+		{"hitpoints",700,1400,0},
 		{"healthSacrifice",0,-9,0},
 		{"actionSacrifice",0,-9,0},
 		{"mindSacrifice",0,-9,0},
