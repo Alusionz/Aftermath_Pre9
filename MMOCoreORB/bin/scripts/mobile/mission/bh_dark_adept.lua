@@ -34,8 +34,23 @@ bh_dark_adept = Creature:new {
 				{group = "junk", chance = 2500000},
 				{group = "tailor_components", chance = 500000},
 				{group = "loot_kit_parts", chance = 500000},
-				{group = "color_crystals", chance = 500000},
-				{group = "power_crystals", chance = 1000000},
+				{group = "color_crystals", chance = 1500000},
+				--{group = "power_crystals", chance = 1000000},
+				{group = "wearables_all", chance = 1000000},
+				{group = "weapons_all", chance = 1000000},
+				{group = "armor_all", chance = 1000000},
+				{group = "clothing_attachments", chance = 1000000},
+				{group = "armor_attachments", chance = 1000000}
+			},
+			lootChance = 5400000
+		},
+		{
+			groups = {
+				{group = "junk", chance = 2500000},
+				{group = "tailor_components", chance = 500000},
+				{group = "loot_kit_parts", chance = 500000},
+				{group = "color_crystals", chance = 1500000},
+				--{group = "power_crystals", chance = 1000000},
 				{group = "wearables_all", chance = 1000000},
 				{group = "weapons_all", chance = 1000000},
 				{group = "armor_all", chance = 1000000},
@@ -51,22 +66,7 @@ bh_dark_adept = Creature:new {
 				{group = "loot_kit_parts", chance = 500000},
 				{group = "color_crystals", chance = 500000},
 				{group = "power_crystals", chance = 1000000},
-				{group = "wearables_all", chance = 1000000},
-				{group = "weapons_all", chance = 1000000},
-				{group = "armor_all", chance = 1000000},
-				{group = "clothing_attachments", chance = 1000000},
-				{group = "armor_attachments", chance = 1000000}
-			},
-			lootChance = 5400000
-		},
-		{
-			groups = {
-				{group = "junk", chance = 2500000},
-				{group = "tailor_components", chance = 500000},
-				{group = "loot_kit_parts", chance = 500000},
-				{group = "color_crystals", chance = 500000},
-				{group = "power_crystals", chance = 500000},
-				{group = "power_crystals", chance = 500000},
+				--{group = "power_crystals", chance = 500000},
 				{group = "wearables_all", chance = 1000000},
 				{group = "weapons_all", chance = 1000000},
 				{group = "armor_all", chance = 1000000},
