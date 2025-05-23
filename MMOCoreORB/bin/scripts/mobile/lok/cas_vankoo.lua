@@ -30,8 +30,8 @@ cas_vankoo = Creature:new {
 		{
 			groups = {
 				{group = "junk", chance = 5200000},
-				{group = "color_crystals", chance = 600000},
-				{group = "power_crystals", chance = 400000},
+				{group = "color_crystals", chance = 1000000},
+				--{group = "power_crystals", chance = 400000},
 				{group = "melee_polearm", chance = 600000},
 				{group = "pistols", chance = 600000},
 				{group = "clothing_attachments", chance = 800000},
