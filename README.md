@@ -1,6 +1,8 @@
-## SWG Aftermath_Pre9 ##
+## SWG Aftermath_Pre9 - an expiriment!  ##
 
 [![GitHub Commits](https://img.shields.io/github/last-commit/SWGAftermath/Aftermath.svg?color=FF0000&style=plastic)](https://github.com/SWGAftermath/Aftermath/commits/main)
+
+All credit should be given to the Aftermath team as this is mainly a fork of their work with a few minor changes made for personal preference. See credits below:
 
 ## Aftermath Credits and Thanks ##
 
