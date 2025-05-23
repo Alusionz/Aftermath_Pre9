@@ -41,20 +41,20 @@
 --which carries forward this exception.
 
 --Determines how often exceptional and legendary items can drop.
-yellowChance = 250 -- 1 in 250
-exceptionalChance = 1000 --1 in 1000
-legendaryChance = 10000 --1 in 10,000
+yellowChance = 5 -- 1 in 5
+exceptionalChance = 50 --1 in 50
+legendaryChance = 100 --1 in 100
 --yellowChance = 50 --1 in 50 for testing
 --exceptionalChance = 100 --1 in 100 for testing
 --legendaryChance = 1000 --1 in 1000 for testing
 
 --Determines how much of an increase in the base stats will be applied to the object.
-yellowModifier = 1.5
-exceptionalModifier = 2
-legendaryModifier = 3.5
+yellowModifier = 5
+exceptionalModifier = 10
+legendaryModifier = 15
 
 --The chance for random skill mods to be on looted weapons/wearables
-skillModChance = 500 -- 1 in 500
+skillModChance = 5 -- 1 in 5
 
 -- Value ranges for random dots on looted weapons (chance is set individually on the loot items)
 randomDotAttribute = {0, 8} -- See CreatureAttributes.h in src for numbers.
@@ -67,10 +67,10 @@ randomDotUses = {250, 9999}
 junkValueModifier = 5;
 
 lootableArmorAttachmentStatMods = {
-	"berserk",
+	--"berserk",
 	"blind_defense",
-	"block",
-	"camouflage",
+	--"block",
+	--"camouflage",
 	"carbine_accuracy",
 	"carbine_hit_while_moving",
 	"carbine_speed",
@@ -82,13 +82,13 @@ lootableArmorAttachmentStatMods = {
 	"droid_find_speed",
 	"droid_track_chance",
 	"droid_track_speed",
-	"foraging",
-	"group_slope_move",
+	--"foraging",
+	--"group_slope_move",
 	"heavy_rifle_lightning_accuracy",
 	"heavy_rifle_lightning_speed",
 	"heavyweapon_accuracy",
 	"heavyweapon_speed",
-	"keep_creature",
+	--"keep_creature",
 	"knockdown_defense",
 	"melee_defense",
 	"onehandmelee_accuracy",
@@ -100,7 +100,7 @@ lootableArmorAttachmentStatMods = {
 	"polearm_accuracy",
 	"polearm_speed",
 	"posture_change_down_defense",
-	"posture_change_up_defense",
+	--"posture_change_up_defense",
 	"ranged_defense",
 	"resistance_bleeding",
 	"resistance_disease",
@@ -109,8 +109,8 @@ lootableArmorAttachmentStatMods = {
 	"rifle_accuracy",
 	"rifle_hit_while_moving",
 	"rifle_speed",
-	"slope_move",
-	"steadyaim",
+	--"slope_move",
+	--"steadyaim",
 	"stun_defense",
 	"tame_aggro",
 	"tame_bonus",
@@ -122,7 +122,7 @@ lootableArmorAttachmentStatMods = {
 	"unarmed_accuracy",
 	"unarmed_damage",
 	"unarmed_speed",
-	"volley",
+	--"volley",
 	"twohandlightsaber_accuracy",
 	"onehandlightsaber_accuracy",
 	"polearmlightsaber_accuracy",
@@ -788,8 +788,8 @@ lootableHeavyWeaponStatMods = {
 -- Values used to generate lightsaber crystal stats
 jediCrystalStats = {
 	lightsaber_module_force_crystal = {
-		minDamage = 0,
-		maxDamage = 50,
+		minDamage = 100,
+		maxDamage = 150,
 		minHitpoints = 700,
 		maxHitpoints = 1400,
 		minHealthSac = 0,
@@ -800,14 +800,14 @@ jediCrystalStats = {
 		maxMindSac = -9,
 		minAttackSpeed = 0,
 		maxAttackSpeed = -0.6,
-		minForceCost = 0,
-		maxForceCost = -9.9,
+		minForceCost = -9.0,
+		maxForceCost = -14.9,
 		minWoundChance = 0,
 		maxWoundChance = 4,
 	},
 	lightsaber_module_krayt_dragon_pearl = {
-		minDamage = 20,
-		maxDamage = 50,
+		minDamage = 100,
+		maxDamage = 150,
 		minHitpoints = 900,
 		maxHitpoints = 1400,
 		minHealthSac = -6,
@@ -818,8 +818,8 @@ jediCrystalStats = {
 		maxMindSac = -9,
 		minAttackSpeed = -0.3,
 		maxAttackSpeed = -0.6,
-		minForceCost = -5.0,
-		maxForceCost = -9.9,
+		minForceCost = -9.0,
+		maxForceCost = -14.9,
 		minWoundChance = 2,
 		maxWoundChance = 4,
 	}
