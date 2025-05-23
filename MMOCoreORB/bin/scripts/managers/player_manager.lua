@@ -59,16 +59,16 @@ cheapPerformanceBuff = 400
 cheapMedicalBuff = 750
 
 --Expensive Buffs
-expensivePerformanceBuff = 800
-expensivePerformanceSubBuff = 400
-expensiveMedicalBuff = 1750
-expensiveMedicalSubBuff = 1900
+expensivePerformanceBuff = 2000
+expensivePerformanceSubBuff = 1800
+expensiveMedicalBuff = 4750
+expensiveMedicalSubBuff = 4900
 
 --Sets the experience multiplier while grouped
-groupExpMultiplier = 1.2
+groupExpMultiplier = 1.5
 
 --Sets a global experience multiplier
-globalExpMultiplier = 6
+globalExpMultiplier = 10
 
 --Sets the base number of control devices of each type that a player can have in their datapad at once
 --For creature pets, A Creature Handler will have the base number + their stored pets skill mod as limit
@@ -81,9 +81,9 @@ baseStoredShips = 3
 -----------------------------------
 --VETERAN REWARDS CONFIG
 -----------------------------------
-veteranRewardMilestones = {30, 60, 90, 120, 150, 180, 310, 340, 370, 400, 430, 460} --days, must be sorted low to high
+veteranRewardMilestones = {1, 3, 9, 12, 15, 18, 31, 34, 37, 40, 43, 46} --days, must be sorted low to high
 
-veteranRewardAdditionalMilestones = 30 --frequency, in days, of additional milestones (beyond the established ones)
+veteranRewardAdditionalMilestones = 5 --frequency, in days, of additional milestones (beyond the established ones)
 
 veteranRewards = {
 
