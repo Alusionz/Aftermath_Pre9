@@ -1,59 +1,41 @@
--- File: MMOCoreORB/bin/scripts/managers/jedi/jedi_account_unlock.lua
+local JediAccountUnlock = {}
 
-JediAccountUnlock = {}
+local db = require("utils.database")
 
--- Get the Jedi unlock status for the given account
--- Returns:
--- 0 = not unlocked
--- 1 = unlocked, slot not yet used
--- 2 = slot used
+-- Check the Jedi unlock status for an account
+-- 0 = locked, 1 = unlocked, 2 = used
 function JediAccountUnlock:getStatus(accountId)
-    if accountId == nil then
-        return 0
+    local res = db:select("SELECT status FROM jedi_unlocks WHERE account_id = %d", accountId)
+    if res and #res > 0 then
+        local status = res[1].status
+        if status == "unlocked" then
+            return 1
+        elseif status == "used" then
+            return 2
+        end
     end
-
-    local query = string.format("SELECT unlock_status FROM account_jedi_unlock WHERE account_id = %d", accountId)
-    local result = SceneObjectDatabase:selectQuery(query)
-
-    if result:size() == 0 then
-        return 0
-    end
-
-    return tonumber(result:getObject(0):getIntColumn("unlock_status"))
+    return 0
 end
 
--- Set the Jedi unlock status for the given account
-function JediAccountUnlock:setStatus(accountId, status)
-    if accountId == nil or status == nil then
-        return
-    end
-
-    local query = string.format(
-        "REPLACE INTO account_jedi_unlock (account_id, unlock_status) VALUES (%d, %d)",
-        accountId,
-        status
-    )
-    SceneObjectDatabase:executeStatement(query)
-end
-
--- Helper: Mark Jedi as unlocked (status = 1)
+-- Unlock the Jedi slot for the account (sets status to 'unlocked')
 function JediAccountUnlock:unlockJediSlot(accountId)
-    self:setStatus(accountId, 1)
+    local current = self:getStatus(accountId)
+    if current == 0 then
+        db:execute("INSERT INTO jedi_unlocks (account_id, status) VALUES (%d, 'unlocked')", accountId)
+    end
 end
 
--- Helper: Mark Jedi slot as used (status = 2)
+-- Mark that the Jedi slot has been used (sets status to 'used')
 function JediAccountUnlock:markJediSlotUsed(accountId)
-    self:setStatus(accountId, 2)
+    local current = self:getStatus(accountId)
+    if current == 1 then
+        db:execute("UPDATE jedi_unlocks SET status = 'used' WHERE account_id = %d", accountId)
+    end
 end
 
--- Helper: Check if the Jedi slot is unlocked and available (status = 1)
+-- Check if a Jedi character can be created
 function JediAccountUnlock:isJediSlotAvailable(accountId)
     return self:getStatus(accountId) == 1
-end
-
--- Helper: Check if Jedi has already been used (status = 2)
-function JediAccountUnlock:hasUsedJediSlot(accountId)
-    return self:getStatus(accountId) == 2
 end
 
 return JediAccountUnlock
