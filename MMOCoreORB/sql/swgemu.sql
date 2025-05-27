@@ -13561,3 +13561,10 @@ ALTER TABLE `swgemu`.`deleted_characters` ADD COLUMN `db_deleted` BOOLEAN  NOT N
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+
+-- unlock_status: 0 = not unlocked, 1 = unlocked (jedi slot available), 2 = jedi slot used
+CREATE TABLE `account_jedi_unlock` (
+  `account_id` BIGINT NOT NULL PRIMARY KEY,
+  `unlock_status` INT NOT NULL DEFAULT 0
+);
+
