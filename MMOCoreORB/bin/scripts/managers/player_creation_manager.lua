@@ -9,15 +9,26 @@ startingBank = 10000
 --How many skill points a new characters start with
 skillPoints = 250
 
-professions = {
-	"combat_brawler",
-	"combat_marksman",
-	"crafting_artisan",
-	"jedi",
-	"outdoors_scout",
-	"science_medic",
-	"social_entertainer"
-}
+local JediAccountUnlock = require("managers.jedi.jedi_account_unlock")
+
+function getStartingProfessions(pPlayer)
+	local accountId = CreatureObject(pPlayer):getAccountId()
+
+	if accountId ~= nil and JediAccountUnlock:isJediSlotAvailable(accountId) then
+		-- Only allow Jedi profession if the slot is unlocked and unused
+		return { "jedi" }
+	end
+
+	-- Normal default starting professions
+	return {
+		"combat_brawler",
+		"combat_marksman",
+		"crafting_artisan",
+		"outdoors_scout",
+		"science_medic",
+		"social_entertainer"
+	}
+end
 
 marksmanPistol = "object/weapon/ranged/pistol/pistol_cdef.iff"
 	
