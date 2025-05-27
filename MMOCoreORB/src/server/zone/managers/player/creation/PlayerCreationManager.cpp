@@ -3,6 +3,7 @@
 		See file COPYING for copying conditions.
 */
 
+#include "engine/lua/LuaFunction.h"
 #include "server/db/ServerDatabase.h"
 #include "PlayerCreationManager.h"
 #include "server/zone/managers/player/PlayerManager.h"
@@ -373,8 +374,28 @@ bool PlayerCreationManager::createCharacter(ClientCreateCharacterCallback* callb
 	String profession, customization, hairTemplate, hairCustomization;
 	callback->getSkill(profession);
 
-	if (profession.contains("jedi"))
-		profession = "crafting_artisan";
+	if (profession.contains("jedi")) {
+	    int accountId = client->getAccountID();
+	
+	    Lua* lua = new Lua();
+	    lua->init();
+	
+	    // Load the Jedi unlock module
+	    lua->runFile("scripts/managers/jedi/jedi_account_unlock.lua");
+	
+	    lua->callFunction("JediAccountUnlock", "isJediSlotAvailable", 1);
+	    lua->pushInteger(accountId);
+	
+	    bool isAvailable = lua->getBoolean();
+	
+	    delete lua;
+	
+	    if (!isAvailable) {
+	        ErrorMessage* errMsg = new ErrorMessage("Create Error", "You have not unlocked the Jedi character slot.", 0x0);
+	        client->sendMessage(errMsg);
+	        return false;
+	    }
+	}
 
 	callback->getCustomizationString(customization);
 	callback->getHairObject(hairTemplate);
@@ -568,6 +589,22 @@ bool PlayerCreationManager::createCharacter(ClientCreateCharacterCallback* callb
 	client->addCharacter(playerCreature->getObjectID(), zoneServer.get()->getGalaxyID());
 
 	JediManager::instance()->onPlayerCreated(playerCreature);
+
+	if (profession.contains("jedi")) {
+	    int accountId = client->getAccountID();
+	
+	    Lua* lua = new Lua();
+	    lua->init();
+	
+	    lua->runFile("scripts/managers/jedi/jedi_account_unlock.lua");
+	
+	    lua->callFunction("JediAccountUnlock", "markJediSlotUsed", 1);
+	    lua->pushInteger(accountId);
+	    lua->endCall();
+	
+	    delete lua;
+	}
+
 
 	chatManager->sendMail("system", "@newbie_tutorial/newbie_mail:welcome_subject", "@newbie_tutorial/newbie_mail:welcome_body", playerCreature->getFirstName());
 
