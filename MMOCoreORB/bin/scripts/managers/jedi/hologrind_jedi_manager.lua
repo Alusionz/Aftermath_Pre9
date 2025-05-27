@@ -1,3 +1,5 @@
+local JediAccountUnlock = require("managers.jedi.jedi_account_unlock")
+
 JediManager = require("managers.jedi.jedi_manager")
 local ObjectManager = require("managers.object.object_manager")
 
@@ -147,8 +149,16 @@ end
 -- @param pCreatureObject pointer to the creature object of the player to check the jedi progression on.
 function HologrindJediManager:checkIfProgressedToJedi(pCreatureObject)
 	if self:getNumberOfMasteredProfessions(pCreatureObject) >= NUMBEROFPROFESSIONSTOMASTER and not self:isJedi(pCreatureObject) then
-		self:sendSuiWindow(pCreatureObject)
-		self:awardJediStatusAndSkill(pCreatureObject)
+		local accountId = CreatureObject(pCreatureObject):getAccountId()
+		if accountId ~= nil then
+		    local currentStatus = JediAccountUnlock:getStatus(accountId)
+		
+		    -- Only unlock if they haven’t already used their Jedi slot
+		    if currentStatus == 0 then
+		        JediAccountUnlock:unlockJediSlot(accountId)
+		        CreatureObject(pCreatureObject):sendSystemMessage("You begin to feel attuned with the power of the Force. Your Force Sensitive character slot has been unlocked.")
+		    end
+		end
 	end
 end
 
