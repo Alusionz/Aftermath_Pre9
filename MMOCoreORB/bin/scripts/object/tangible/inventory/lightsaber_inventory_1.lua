@@ -42,6 +42,8 @@
 
 
 object_tangible_inventory_lightsaber_inventory_1 = object_tangible_inventory_shared_lightsaber_inventory_1:new {
+  -- allow equip with zero crystals
+  minimumItems = 0,
 
 }
 
