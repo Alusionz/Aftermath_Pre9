@@ -47,4 +47,8 @@ object_tangible_inventory_lightsaber_inventory_1 = object_tangible_inventory_sha
 
 }
 
+function object_tangible_inventory_lightsaber_inventory_1:canEquip(weapon, user)
+  return 0  -- 0 = success
+end
+
 ObjectTemplates:addTemplate(object_tangible_inventory_lightsaber_inventory_1, "object/tangible/inventory/lightsaber_inventory_1.iff")
