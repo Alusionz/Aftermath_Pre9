@@ -92,3 +92,33 @@ object_draft_schematic_weapon_lightsaber_lightsaber_one_hand_gen1 = object_draft
 
 }
 ObjectTemplates:addTemplate(object_draft_schematic_weapon_lightsaber_lightsaber_one_hand_gen1, "object/draft_schematic/weapon/lightsaber/lightsaber_one_hand_gen1.iff")
+
+-- after the existing template registration:
+function object_draft_schematic_weapon_lightsaber_shared_lightsaber_one_hand_gen1:onAssembleSchematic(player, schematicItem, factoryCrate, ingredients, results, tool, use, productivity)
+    -- call the base implementation first
+    local success = DraftSchematicObject.onAssembleSchematic(self, player, schematicItem, factoryCrate, ingredients, results, tool, use, productivity)
+    if not success or not results or not results[1] then
+        return success
+    end
+
+    local saber = results[1]
+
+    -- ingredients.primary_crystal is now a table of the one crystal you passed in
+    local crystalTable = ingredients.primary_crystal
+    if crystalTable and crystalTable[1] then
+        local crystal = crystalTable[1]
+
+        -- read crystal stats (these ObjVars must match whatever the crystal items set)
+        local minD = crystal:getIntObjVar("minDamage") or 0
+        local maxD = crystal:getIntObjVar("maxDamage") or 0
+        local color = crystal:getStringObjVar("lightsaberColor") or ""
+
+        -- apply them to the new saber
+        saber:setIntObjVar("minDamage", minD)
+        saber:setIntObjVar("maxDamage", maxD)
+        saber:setStringObjVar("lightsaberColor", color)
+    end
+
+    return success
+end
+
